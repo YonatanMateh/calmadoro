@@ -12,7 +12,10 @@ import ModeRow from './modeRow'
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { updatedTime: '25', action: "", value: "start", playMusic: false, isStopMusic: false, isWorkMode: true }
+    this.state = {
+      updatedTime: '25', action: "", value: "start", playMusic: false,
+      isStopMusic: false, isWorkMode: true, chosenTitle: "work mode"
+    }
   }
   changeTime = (newTime) => {
     this.setState((state, props) => {
@@ -34,7 +37,15 @@ class App extends Component {
 
   }
   finished = () => {
-    this.setState({ playMusic: true, action: "reset", value: "start", isStopMusic: false });
+    this.setState({
+      playMusic: true,
+      action: "reset",
+      value: "start",
+      isStopMusic: false,
+      updatedTime: this.state.isWorkMode ? '05' : '25',
+      chosenTitle: this.state.isWorkMode ? 'break mode' : 'work mode',
+      isWorkMode: !this.state.isWorkMode
+    })
   }
 
   stopMusic = () => {
@@ -42,19 +53,19 @@ class App extends Component {
   }
 
   modeBtnClicked = (title) => {
-    if(title === "work mode") {
-      this.setState({isWorkMode: true, updatedTime: '25'})
+    if (title === "work mode") {
+      this.setState({ isWorkMode: true, updatedTime: '25', chosenTitle: 'work mode' })
     } else {
-      this.setState({isWorkMode: false, updatedTime: '05'})
+      this.setState({ isWorkMode: false, updatedTime: '05', chosenTitle: 'break mode' })
     }
     this.activateAction("reset");
   }
   render() {
     return (
       <div className="App">
-        <ModeRow modeBtnClicked = {this.modeBtnClicked}/>
+        <ModeRow modeBtnClicked={this.modeBtnClicked} chosenTitle={this.state.chosenTitle} />
         <Clock newTime={this.state.updatedTime} action={this.state.action} finished={this.finished} stopMusicFunc={this.stopMusic} />
-        <TimeList changeTime={this.changeTime} isWorkMode = {this.state.isWorkMode}/>
+        <TimeList changeTime={this.changeTime} isWorkMode={this.state.isWorkMode} />
         <ActionRow activateAction={this.activateAction} value={this.state.value} />
         <MusicRow videoChosen={this.videoChosen} playMusic={this.state.playMusic} stopMusic={this.state.isStopMusic} />
         <About />
@@ -62,7 +73,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;

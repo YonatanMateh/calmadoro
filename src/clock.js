@@ -62,13 +62,10 @@ class Clock extends Component {
   }
   strat = (props) => {
     this.timer = setInterval(this.tick, 1000);
-
   }
 
   pause = () => {
     clearInterval(this.timer);
-   // this.props.stopMusicFunc();
-
   }
 
   reset = (props) => { 
@@ -103,7 +100,6 @@ class Clock extends Component {
 
   render() {
     return (
-      
       // <DocumentTitle title={this.title()}>
       <div className="row center-div">
       <span className="main-title" ref={(title) => this.mainTitle = title}>Pomodoro</span>

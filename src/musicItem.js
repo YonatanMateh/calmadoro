@@ -17,17 +17,11 @@ class MusicItem extends React.Component {
 
   videoChosen = (videoId) => {
     this.props.videoChosen(videoId);
-    //this.youtube.internalPlayer.stopVideo();
-    if (this.props.choosenVideoId){
-     console.log(this.props.choosenVideoId)
-    }
   }
 
   componentWillReceiveProps(newProps) {
-    // console.log(this.youtube.internalPlayer.loadVideoById());
     this.setState({videoChosenId: newProps.choosenVideoId})
     if (newProps.choosenVideoId === this.youtube.props.videoId && newProps.playMusic){
-    //  this.youtube.playVideo()
     this.youtube.internalPlayer.loadVideoById(newProps.choosenVideoId)
     }
     if(newProps.stopMusic) {

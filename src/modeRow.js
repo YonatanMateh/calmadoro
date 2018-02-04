@@ -4,13 +4,18 @@ import ModeButton from './modeButton'
 class ModeRow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { titles: ["work mode", "break mode"], chosenBtn: "work mode" }
+    this.state = { titles: ["work mode", "break mode"], chosenBtn: props.chosenTitle }
 
   }
 
   modeBtnClicked = (title) => {
     this.props.modeBtnClicked(title);
-    this.setState({ chosenBtn: title })
+    // this.setState({ chosenBtn: title })
+  }
+
+  componentWillReceiveProps(newProps) {
+    console.log(newProps.chosenTitle);
+    this.setState({ chosenBtn: newProps.chosenTitle })
   }
 
   render() {
