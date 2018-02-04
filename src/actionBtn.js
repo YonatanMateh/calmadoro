@@ -13,7 +13,7 @@ class ActionBtn extends React.Component {
   render() {
     return (
         <button type="button" ref={(btn) => this.btnRef = btn} onClick={this.btnClicked} 
-        className="btn action-btn" value={this.props.value}>{this.props.value}</button>
+        className="btn action-btn bounce" value={this.props.value}>{this.props.value}</button>
     )
   }
 }

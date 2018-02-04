@@ -5,7 +5,10 @@
   "dependencies": {
     "@fortawesome/react-fontawesome": "0.0.17",
     "bootstrap": "^4.0.0",
+    "circletype": "^2.2.0",
+    "jquery": "^3.3.1",
     "react": "^16.2.0",
+    "react-document-title": "^2.0.3",
     "react-dom": "^16.2.0",
     "react-fa": "^5.0.0",
     "react-fontawesome": "^1.6.1",

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import { setTimeout } from 'timers';
+// import $ from 'jquery'
+import CircleType from 'circletype';
+import DocumentTitle from 'react-document-title'
+import {Icon} from 'react-fa'
 
 
 class Clock extends Component {
   constructor(props) {
     super(props);
-    this.state = { minutes: '0', seconds: '02', chohort: "7" };
+    this.state = { minutes: '25', seconds: '00'};
     this.tick = this.tick.bind(this);
   }
 
@@ -20,17 +24,17 @@ class Clock extends Component {
       this.finished();
       this.reset(this.props);
     } else {
-
       if (this.state.seconds <= 0) {
         this.setState((prevState, props) => {
           return {
-            seconds: "02",
-            minutes: "00"//prevState.minutes - 1
+            seconds: "59",
+            minutes: (prevState.minutes < 11) ? '0' + --prevState.minutes : --prevState.minutes
+            // minutes: (prevState.minutes < 11) ? ('0' + --prevState.minutes).slice(-2) : --prevState.minutes
           };
         });
       } else {
         this.setState((prevState, props) => {
-          return { seconds: (prevState.seconds < 11) ? ('0' + --prevState.seconds).slice(-2) : --prevState.seconds };
+          return { seconds: (prevState.seconds < 11) ? '0' + --prevState.seconds : --prevState.seconds };
         });
       }
     }
@@ -88,11 +92,24 @@ class Clock extends Component {
     })
   }
 
+  componentDidMount() {
+    const circleType = new CircleType(this.mainTitle);
+    circleType.radius(330);
+  }
+ 
+  title =() => {
+    return <div><Icon name="clock"/>{this.state.minutes}:{this.state.seconds}</div>
+  }
+
   render() {
     return (
+      
+      // <DocumentTitle title={this.title()}>
       <div className="row center-div">
+      <span className="main-title" ref={(title) => this.mainTitle = title}>Pomodoro</span>
         <h2 className='clock'>{this.state.minutes}:{this.state.seconds}</h2>
       </div>
+      // </DocumentTitle>
     );
   }
 }
