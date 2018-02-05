@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
-import { clearImmediate } from 'timers';
 import Clock from './clock'
 import TimeList from './timeList'
 import ActionRow from './actionRow'
 import MusicRow from './musicRow'
 import About from './about'
 import ModeRow from './modeRow'
-
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +15,7 @@ class App extends Component {
       isStopMusic: false, isWorkMode: true, chosenTitle: "work mode"
     }
   }
+
   changeTime = (newTime) => {
     this.setState((state, props) => {
       return {
@@ -34,8 +33,8 @@ class App extends Component {
       this.setState({ value: "start", playMusic: false, isStopMusic: true });
     }
     this.setState({ action: value, playMusic: false });
-
   }
+
   finished = () => {
     this.setState({
       playMusic: true,
@@ -60,6 +59,7 @@ class App extends Component {
     }
     this.activateAction("reset");
   }
+
   render() {
     return (
       <div className="App">

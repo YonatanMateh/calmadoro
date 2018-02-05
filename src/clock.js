@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.css';
-import { setTimeout } from 'timers';
-// import $ from 'jquery'
 import CircleType from 'circletype';
-import DocumentTitle from 'react-document-title'
-import {Icon} from 'react-fa'
-
+import { Helmet } from "react-helmet";
 
 class Clock extends Component {
   constructor(props) {
     super(props);
-    this.state = { minutes: '25', seconds: '00'};
+    this.state = { minutes: '25', seconds: '00' };
     this.tick = this.tick.bind(this);
   }
 
@@ -19,7 +14,6 @@ class Clock extends Component {
   }
 
   tick() {
-
     if (this.state.seconds == 0 && this.state.minutes == 0) {
       this.finished();
       this.reset(this.props);
@@ -29,7 +23,6 @@ class Clock extends Component {
           return {
             seconds: "59",
             minutes: (prevState.minutes < 11) ? '0' + --prevState.minutes : --prevState.minutes
-            // minutes: (prevState.minutes < 11) ? ('0' + --prevState.minutes).slice(-2) : --prevState.minutes
           };
         });
       } else {
@@ -54,12 +47,15 @@ class Clock extends Component {
       case "timeChanged":
         this.timeChanged(nextProps);
         break;
+      default:
+        break;
     }
   }
 
   finished = () => {
     this.props.finished();
   }
+
   strat = (props) => {
     this.timer = setInterval(this.tick, 1000);
   }
@@ -68,10 +64,9 @@ class Clock extends Component {
     clearInterval(this.timer);
   }
 
-  reset = (props) => { 
+  reset = (props) => {
     this.updateTime(props);
     clearInterval(this.timer);
-
   }
 
   timeChanged = (props) => {
@@ -91,24 +86,20 @@ class Clock extends Component {
 
   componentDidMount() {
     const circleType = new CircleType(this.mainTitle);
-    circleType.radius(330);
-  }
- 
-  title =() => {
-    return <div><Icon name="clock"/>{this.state.minutes}:{this.state.seconds}</div>
+    circleType.radius(380);
   }
 
   render() {
     return (
-      // <DocumentTitle title={this.title()}>
       <div className="row center-div">
-      <span className="main-title" ref={(title) => this.mainTitle = title}>Pomodoro</span>
+        <Helmet>
+          <title>{`${this.state.minutes}:${this.state.seconds}`} Pomodoro</title>
+        </Helmet>
+        <span className="main-title default-text" ref={(title) => this.mainTitle = title}>Pomodoro</span>
         <h2 className='clock'>{this.state.minutes}:{this.state.seconds}</h2>
       </div>
-      // </DocumentTitle>
     );
   }
 }
 
 export default Clock;
-

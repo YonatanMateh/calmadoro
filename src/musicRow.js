@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.css';
 import MusicItem from './musicItem'
 import VideoCover from './videoCover'
 
@@ -25,10 +24,8 @@ class MusicRow extends React.Component {
       this.setState({ stopMusic: true });
     } else {
       this.setState({ stopMusic: false });
-
     }
   }
-
 
   render() {
     return (
@@ -36,14 +33,11 @@ class MusicRow extends React.Component {
         {this.state.videoIds.map((item, index) =>
           <MusicItem key={index} videoId={item} videoChosen={this.videoChosen} choosenVideoId={this.state.choosenVideoId}
             playMusic={this.state.playMusic} stopMusic={this.state.stopMusic}><VideoCover /></MusicItem>
-        )
-        }
+        )}
       </div>
     )
   }
 }
-
-
 
 
 export default MusicRow;
