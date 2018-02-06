@@ -10,7 +10,6 @@ class ModeRow extends React.Component {
 
   modeBtnClicked = (title) => {
     this.props.modeBtnClicked(title);
-    // this.setState({ chosenBtn: title })
   }
 
   componentWillReceiveProps(newProps) {

@@ -19,12 +19,7 @@ class MusicRow extends React.Component {
     if (newProps.playMusic) {
       this.setState({ playMusic: true, choosenVideoId: this.state.choosenVideoId ? this.state.choosenVideoId : "BPNTC7uZYrI" });
     }
-
-    if (newProps.stopMusic) {
-      this.setState({ stopMusic: true });
-    } else {
-      this.setState({ stopMusic: false });
-    }
+    this.setState({ stopMusic: newProps.stopMusic });
   }
 
   render() {

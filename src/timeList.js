@@ -5,7 +5,7 @@ import CustomTime from './customTime'
 class TimeList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isCustom: "hide col-lg-2", isWorkMode: true, times: this.workTimes }
+    this.state = { isCustom: "hide", isWorkMode: true, times: this.workTimes }
   }
 
   workTimes = ["15", "20", "25", "30", "35", "custom"];
@@ -13,14 +13,12 @@ class TimeList extends React.Component {
 
   changeTime = (newTime) => {
     if (newTime === "custom") {
-      if (this.state.isCustom === "hide col-lg-2") {
-        this.setState({ isCustom: "show col-lg-2" })
-      } else {
-        this.setState({ isCustom: "hide col-lg-2" })
-      }
+      this.setState({
+        isCustom: this.state.isCustom === "hide" ? "show" : "hide"
+      })
     } else {
       this.props.changeTime(newTime < 10 ? (0 + newTime) : newTime);
-      this.setState({ isCustom: "hide col-lg-2" })
+      this.setState({ isCustom: "hide" })
     }
   }
 
@@ -38,7 +36,7 @@ class TimeList extends React.Component {
         {this.state.times.map((item, index) =>
           <TimeBtn key={index} changeTime={this.changeTime} value={item} />
         )}
-        <CustomTime changeTime={this.changeTime} isCustom={this.state.isCustom} />
+        <CustomTime changeTime={this.changeTime} isCustom={`col-lg-2 ${this.state.isCustom}`} />
       </div>
     )
   }
