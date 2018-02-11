@@ -13,7 +13,6 @@ class ModeRow extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log(newProps.chosenTitle);
     this.setState({ chosenBtn: newProps.chosenTitle })
   }
 

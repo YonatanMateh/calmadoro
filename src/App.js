@@ -48,7 +48,7 @@ class App extends Component {
   }
 
   stopMusic = () => {
-    console.log("stop music " + this.state.isStopMusic)
+    //console.log("stop music " + this.state.isStopMusic)
   }
 
   modeBtnClicked = (title) => {
