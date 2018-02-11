@@ -10,8 +10,10 @@ class MusicItem extends React.Component {
       height: '100%',
       width: '100%',
       playerVars: {
+        origin: document.origin
       }
     };
+   // console.log(document.origin)
   }
 
   videoChosen = (videoId) => {
