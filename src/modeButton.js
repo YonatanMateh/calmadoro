@@ -16,7 +16,7 @@ class ModeButton extends React.Component {
 
   render() {
     return (
-      <div className="col-md-4 mode-btn-container">
+      <div className="col-md-6 mode-btn-container">
         <button ref={this.title = this.props.title} onClick={this.btnClicked}
           className={`mode-btn default-text ${this.state.chosenBtn === this.props.title ? "mode-btn-clicked" : ""}`}>
           {this.props.title}</button>

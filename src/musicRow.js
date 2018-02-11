@@ -24,7 +24,7 @@ class MusicRow extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-md-center music-container">
+      <div className="row justify-content-center music-container">
         {this.state.videoIds.map((item, index) =>
           <MusicItem key={index} videoId={item} videoChosen={this.videoChosen} choosenVideoId={this.state.choosenVideoId}
             playMusic={this.state.playMusic} stopMusic={this.state.stopMusic}><VideoCover /></MusicItem>

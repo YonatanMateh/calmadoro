@@ -17,7 +17,7 @@ class ActionRow extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-md-center action-container">
+      <div className="row action-container justify-content-center">
         <ActionBtn actionClicked={this.actionClicked} value={this.state.value} />
         <ActionBtn actionClicked={this.actionClicked} value="reset" />
       </div>

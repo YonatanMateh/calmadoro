@@ -63,10 +63,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <ModeRow modeBtnClicked={this.modeBtnClicked} chosenTitle={this.state.chosenTitle} />
-        <Clock newTime={this.state.updatedTime} action={this.state.action} finished={this.finished} stopMusicFunc={this.stopMusic} />
-        <TimeList changeTime={this.changeTime} isWorkMode={this.state.isWorkMode} />
-        <ActionRow activateAction={this.activateAction} value={this.state.value} />
+        <div className="container">
+          <ModeRow modeBtnClicked={this.modeBtnClicked} chosenTitle={this.state.chosenTitle} />
+          <Clock newTime={this.state.updatedTime} action={this.state.action} finished={this.finished} stopMusicFunc={this.stopMusic} />
+          <TimeList changeTime={this.changeTime} isWorkMode={this.state.isWorkMode} />
+          <ActionRow activateAction={this.activateAction} value={this.state.value} />
+        </div>
         <MusicRow videoChosen={this.videoChosen} playMusic={this.state.playMusic} stopMusic={this.state.isStopMusic} />
         <About />
       </div>

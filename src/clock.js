@@ -95,8 +95,10 @@ class Clock extends Component {
         <Helmet>
           <title>{`${this.state.minutes}:${this.state.seconds}`} Pomodoro</title>
         </Helmet>
+        <div className="col-md-12">
         <span className="main-title default-text" ref={(title) => this.mainTitle = title}>Pomodoro</span>
         <h2 className='clock'>{this.state.minutes}:{this.state.seconds}</h2>
+        </div>
       </div>
     );
   }

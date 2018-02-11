@@ -32,11 +32,11 @@ class TimeList extends React.Component {
 
   render() {
     return (
-      <div className="row justify-content-md-center time-row">
+      <div className="row time-row justify-content-center">
         {this.state.times.map((item, index) =>
           <TimeBtn key={index} changeTime={this.changeTime} value={item} />
         )}
-        <CustomTime changeTime={this.changeTime} isCustom={`col-lg-2 ${this.state.isCustom}`} />
+        <CustomTime changeTime={this.changeTime} isCustom={`col-lg-3 ${this.state.isCustom}`} />
       </div>
     )
   }

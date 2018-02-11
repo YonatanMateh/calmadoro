@@ -13,7 +13,7 @@ class MusicItem extends React.Component {
         origin: document.origin
       }
     };
-   // console.log(document.origin)
+    // console.log(document.origin)
   }
 
   videoChosen = (videoId) => {
@@ -32,7 +32,7 @@ class MusicItem extends React.Component {
 
   render() {
     return (
-      <div className="col-md-2 music-box">
+      <div className="music-box col-xl-2 col-sm-4">
         <VideoCover videoChosenId={this.state.videoChosenId} videoChosen={this.videoChosen} videoId={this.props.videoId} />
         <YouTube videoId={this.props.videoId} ref={(video) => this.youtube = video} opts={this.youtubeOpts} />
       </div>

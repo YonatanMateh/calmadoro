@@ -18,7 +18,7 @@ class ModeRow extends React.Component {
 
   render() {
     return (
-      <div className="mode-container row justify-content-md-center">
+      <div className="mode-container row">
         {this.state.titles.map((item, index) =>
           <ModeButton key={index} title={item} btnClicked={this.modeBtnClicked} chosenBtn={this.state.chosenBtn} />
         )}
