@@ -47,9 +47,8 @@ class App extends Component {
     })
   }
 
-  stopMusic = () => {
-    //console.log("stop music " + this.state.isStopMusic)
-  }
+  // stopMusic = () => {
+  // }
 
   modeBtnClicked = (title) => {
     if (title === "work mode") {
